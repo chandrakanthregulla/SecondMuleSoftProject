@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="d9a4fdae-3c23-485a-b4a0-8fd67ab8146a" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:listener-config name="HTTP_Listener_config2" doc:name="HTTP Listener config" doc:id="09f64ee9-4c6e-4348-b1e4-94abfe0c2a66" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<flow name="sample2Flow" doc:id="c1afdd7a-7bff-4291-81b4-35bd679f971c" >
+		<http:listener doc:name="Listener" doc:id="22ab62fb-36ed-4b49-bbc7-6079697edb02" config-ref="HTTP_Listener_config" path="/search" allowedMethods="GET"/>
+		<set-payload value='"Hello world"' doc:name="Set Payload" doc:id="547722ca-17d9-4046-8658-5ff4f1f3a042" />
+	</flow>
+	<flow name="sample2Flow1" doc:id="a4b8a1f7-28bd-4b61-9560-fd0cb4733310" >
+		<http:listener doc:name="Listener" doc:id="2ed25799-095b-4faa-9c48-5feadfe3ded1" config-ref="HTTP_Listener_config2" path="/test" allowedMethods="POST"/>
+		<set-payload value='"Hello sravan"' doc:name="Set Payload" doc:id="a14fc339-07fa-4342-a82a-ada87cec2d1d" />
+	</flow>
+</mule>
